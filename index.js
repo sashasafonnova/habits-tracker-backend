@@ -1,6 +1,7 @@
 import dotenv from "dotenv"
 import express from "express";
 import mongoose from "mongoose";
+import cors from 'cors';
 
 import controllers from './controllers/index.js';
 
@@ -13,6 +14,8 @@ const app = express();
 
 
 app.use(express.json());
+app.use(cors());
+
 
 
 mongoose.connect(process.env.MONGODB_URL)
