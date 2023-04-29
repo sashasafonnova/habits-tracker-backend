@@ -14,7 +14,7 @@ const isAuth = async (req, res) => {
       }
 
 
-      const { firstName, email, _id } = registeredUser._doc;
+      const { firstName, email, _id } = foundUser._doc;
 
       res.json({
          firstName,
