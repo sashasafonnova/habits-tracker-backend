@@ -4,9 +4,11 @@ import mongoose from "mongoose";
 import cors from 'cors';
 
 import controllers from './controllers/index.js';
-
 import validations from './validations/index.js';
+
 import handleValidationErr from "./middlewares/handleValidationErr.js";
+import isAuth from "./middlewares/isAuth.js";
+
 
 dotenv.config()
 
@@ -35,6 +37,12 @@ app.listen(process.env.PORT || 3005, (err) => {
 
 app.post('/registration', validations.registration, handleValidationErr, controllers.user.registration);
 app.post('/login', validations.login, handleValidationErr, controllers.user.login);
+
+app.get('/account', isAuth, controllers.user.isAuth);
+
+
+
+
 
 
 
