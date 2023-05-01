@@ -26,7 +26,7 @@ const isAuth = async (req, res) => {
    } catch (err) {
       console.log(err);
       res.status(500).json({
-         message: 'Не удалось авторизоваться',
+         message: 'Не удалось зарегистрироваться',
       });
    }
 }

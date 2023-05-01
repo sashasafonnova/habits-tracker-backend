@@ -5,7 +5,20 @@ import UserModel from '../../models/User.js';
 
 
 const registration = async (req, res) => {
+
    try {
+
+      const foundUser = await UserModel.findOne({ email: req.body.email });
+
+      if (foundUser) {
+         res.status(404);
+         res.json({
+            message: "Пользователь уже существует"
+         })
+         return
+      }
+
+
       const { password } = req.body;
 
       const hashPassword = await bcrypt.hash(password, 10);
@@ -20,17 +33,20 @@ const registration = async (req, res) => {
 
       const token = createToken(registeredUser._id);
 
-      const { pass, ...userData } = registeredUser._doc;
+      const { _id, email, firstName } = registeredUser._doc;
 
       res.json({
-         ...userData,
+         _id, 
+         email, 
+         firstName,
          token,
       });
 
 
    } catch (err) {
       console.log(err);
-      res.status(500).json({
+      res.status(500);
+      res.json({
          message: 'Не удалось зарегистрироваться',
       });
    }
