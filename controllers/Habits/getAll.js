@@ -9,7 +9,6 @@ const getAll = async (req, res) => {
       const habits = await HabitModel.find({ author: req.userId }).sort({ createdAt: "descending" }); // descending, ascending
 
       const habitsInfo = habits.map((habit) => {
-
          const { createdAt, updatedAt, __v, ...data } = habit._doc;
          return {
             ...data
