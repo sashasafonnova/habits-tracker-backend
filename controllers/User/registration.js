@@ -3,8 +3,17 @@ import { createToken } from '../../utils/createToken.js';
 
 import UserModel from '../../models/User.js';
 
+import { registrationValidate } from "../../validations/User/registration.js";
+
+
 
 const registration = async (req, res) => {
+
+   const { error, value } = registrationValidate.validate(req.body)
+   if (error) {
+      console.log(value)
+      return res.status(400).json(error.message)
+   }
 
    try {
 

@@ -2,7 +2,7 @@ import { decodeToken}  from '../utils/decodeToken.js';
 
 export default (req, res, next) => {
 
-   const token = req.headers.authorization;
+   const token = req.headers.authorization.replace(/Bearer\s?/, '');
 
    if (token) {
       

@@ -2,8 +2,19 @@ import { createToken } from '../../utils/createToken.js';
 import bcrypt from 'bcrypt';
 import UserModel from "../../models/User.js";
 
+import { loginValidate } from "../../validations/User/login.js";
+
+
 
 const login = async (req, res) => {
+
+      const { error, value } = loginValidate.validate(req.body)
+      if (error) {
+         console.log(value)
+         return res.status(400).json(error.message)
+      }
+   
+
    try {
       const foundUser = await UserModel.findOne({ email: req.body.email });
 
