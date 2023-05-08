@@ -30,12 +30,10 @@ export const createHabitValidate = Joi.object({
       }),
    progress:
       Joi.number()
-      .required()
       .max(60)
       .messages({
          "number.base": "Некорректный формат",
          "number.max": "Максимальное значение 60",
-         'any.required': `Пожалуйста, укажите значение`
       }),
    dateCreated:
       Joi.string()
