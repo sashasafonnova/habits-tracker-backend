@@ -6,6 +6,7 @@ import create from './Habits/create.js';
 import getAll from './Habits/getAll.js';
 import getOne from './Habits/getOne.js';
 import remove from './Habits/remove.js';
+import update from './Habits/update.js';
 
 
 
@@ -20,7 +21,8 @@ const controllers = {
       create,
       getAll,
       remove,
-      getOne
+      getOne,
+      update,
    },
 }
 

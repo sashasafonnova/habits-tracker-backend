@@ -7,7 +7,6 @@ const create = async (req, res) => {
 
    const { error, value } = createHabitValidate.validate(req.body)
    if (error) {
-      console.log(value)
       return res.status(400).json(error.message)
    }
 
